@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Explorações de logomarca para aprovação da fin-stack academy.">
+  <title>Logomarca — fin-stack academy</title>
+  <link rel="stylesheet" href="./design-system.css">
+  <style>
+    :root { --board:#e7ebe8; }
+    body { overflow-x:hidden; }
+    .page-head { padding-bottom:var(--fs-s7); }
+    .page-head__grid { display:grid; grid-template-columns:8fr 4fr; align-items:end; gap:var(--fs-s7); padding-top:clamp(4rem,10vw,8rem); }
+    .board { padding-block:clamp(3rem,7vw,6rem); border-top:1px solid var(--fs-line); }
+    .board__head { display:grid; grid-template-columns:1fr 1fr; gap:var(--fs-s6); align-items:end; margin-bottom:var(--fs-s7); }
+    .board__index { font:700 clamp(5rem,14vw,11rem)/.75 var(--fs-font-display); letter-spacing:-.08em; color:var(--fs-line); }
+    .logo-stage { min-height:28rem; display:grid; place-items:center; padding:clamp(2rem,7vw,6rem); border-radius:var(--fs-radius-lg); background:var(--fs-surface); }
+    .logo-stage--black { background:var(--fs-black); color:var(--fs-white); }
+    .logo-stage--signal { background:var(--fs-signal); color:var(--fs-black); }
+    .logo-lockup { display:flex; align-items:center; gap:clamp(.85rem,2vw,1.4rem); width:min(100%,42rem); }
+    .logo-lockup svg { flex:0 0 auto; width:clamp(3.5rem,9vw,6rem); height:auto; }
+    .logo-name { font-size:clamp(1.8rem,5vw,4rem); font-weight:800; line-height:.88; letter-spacing:-.065em; }
+    .logo-name small { display:block; margin-top:.48em; font:700 .28em/1 var(--fs-font-mono); letter-spacing:.22em; text-transform:uppercase; }
+    .logo-name--one-line { font-size:clamp(1.35rem,4vw,3.5rem); white-space:nowrap; }
+    .logo-name--one-line small { display:inline; margin-left:.5em; font-size:.32em; letter-spacing:.14em; }
+    .concept-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--fs-s4); margin-top:var(--fs-s4); }
+    .concept-note { padding:var(--fs-s5); border-top:1px solid var(--fs-line); }
+    .sizes { display:flex; align-items:end; justify-content:space-between; gap:var(--fs-s6); padding:clamp(2rem,5vw,4rem); overflow:auto; background:var(--fs-surface); border-radius:var(--fs-radius-lg); }
+    .size-sample { flex:0 0 auto; display:grid; justify-items:center; gap:var(--fs-s3); }
+    .size-sample svg { width:var(--size); height:var(--size); }
+    .micro-lockup { display:flex; align-items:center; gap:.65rem; }
+    .micro-lockup strong { font-weight:800; letter-spacing:-.04em; white-space:nowrap; }
+    .mockups { display:grid; grid-template-columns:7fr 5fr; gap:var(--fs-s4); }
+    .mockup { position:relative; min-height:34rem; overflow:hidden; border-radius:var(--fs-radius-lg); }
+    .mockup-lms { padding:1.25rem; background:#d7dcd9; }
+    .browser { height:100%; overflow:hidden; border-radius:.7rem; background:#fff; box-shadow:0 2rem 5rem rgb(10 13 12 / 18%); color:var(--fs-black); }
+    .browser__top { height:2.6rem; display:flex; align-items:center; gap:.35rem; padding:0 .9rem; border-bottom:1px solid #e2e6e3; }
+    .browser__dot { width:.45rem; aspect-ratio:1; border-radius:50%; background:#c9cfcb; }
+    .browser__nav { display:flex; align-items:center; justify-content:space-between; padding:1.1rem 1.4rem; border-bottom:1px solid #ecefed; }
+    .browser__brand { display:flex; align-items:center; gap:.55rem; font-size:.78rem; font-weight:800; letter-spacing:-.04em; }
+    .browser__brand svg { width:1.4rem; }
+    .browser__body { display:grid; grid-template-columns:1.3fr .7fr; gap:1rem; padding:clamp(1.5rem,4vw,3rem); }
+    .browser__title { max-width:8ch; margin:0; font:800 clamp(2.2rem,5vw,4rem)/.87 var(--fs-font-display); letter-spacing:-.065em; text-transform:uppercase; }
+    .browser__card { min-height:15rem; padding:1.2rem; border-radius:.8rem; background:var(--fs-black); color:#fff; display:flex; flex-direction:column; justify-content:space-between; }
+    .mockup-card { display:grid; place-items:center; background:var(--fs-black); }
+    .business-card { width:min(82%,25rem); aspect-ratio:1.7; display:flex; flex-direction:column; justify-content:space-between; padding:clamp(1.5rem,4vw,2.5rem); border-radius:.45rem; background:var(--fs-signal); color:var(--fs-black); box-shadow:0 2rem 5rem rgb(0 0 0 / 40%); transform:rotate(-5deg); }
+    .business-card .logo-lockup { gap:.65rem; }
+    .business-card .logo-lockup svg { width:2rem; }
+    .business-card .logo-name { font-size:1.1rem; }
+    .business-card__info { font:600 .62rem/1.7 var(--fs-font-mono); }
+    .mockup-mobile { min-height:31rem; display:grid; place-items:center; padding:2rem; background:var(--fs-signal); }
+    .phone { width:15rem; min-height:28rem; padding:.65rem; border-radius:2rem; background:var(--fs-black); box-shadow:0 2rem 4rem rgb(10 13 12 / 28%); }
+    .phone__screen { height:100%; min-height:26.7rem; display:flex; flex-direction:column; padding:1.2rem; border-radius:1.5rem; background:var(--fs-paper); color:var(--fs-black); }
+    .phone__screen .logo-lockup { gap:.4rem; }
+    .phone__screen .logo-lockup svg { width:1.35rem; }
+    .phone__screen .logo-name { font-size:.8rem; }
+    .lesson { margin-top:auto; padding:1rem; border-radius:.8rem; background:var(--fs-black); color:#fff; }
+    .lesson__number { font:800 4rem/.8 var(--fs-font-display); color:var(--fs-signal); }
+    .recommendation { margin-top:var(--fs-s7); padding:clamp(1.5rem,4vw,3rem); background:var(--fs-accent); color:var(--fs-black); border-radius:var(--fs-radius-lg); }
+    .mark { color:currentColor; }
+    @media(max-width:48rem){.page-head__grid,.board__head,.mockups{grid-template-columns:1fr}.board__index{display:none}.concept-grid{grid-template-columns:1fr}.logo-stage{min-height:20rem}.logo-name--one-line{white-space:normal}.mockup{min-height:28rem}.browser__body{grid-template-columns:1fr}.browser__card{min-height:9rem}.mockup-mobile{min-height:28rem}}
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" aria-hidden="true" style="position:absolute;overflow:hidden">
+    <defs>
+      <symbol id="mark-stack" viewBox="0 0 96 96" shape-rendering="crispEdges">
+        <path d="M12 18H84V36H36V78H12V18Z" fill="currentColor"/>
+        <path d="M36 42H84V60H36V42Z" fill="var(--mark-accent,#b7f34a)"/>
+      </symbol>
+    </defs>
+  </svg>
+  <header class="page-head fs-shell">
+    <nav class="fs-nav"><a class="fs-wordmark" href="./index.html"><span class="fs-wordmark__dot"></span>fin-stack academy</a><span class="fs-meta">ESTUDO DE MARCA / V01</span></nav>
+    <div class="page-head__grid"><div class="fs-stack"><p class="fs-kicker">Explorações de logomarca</p><h1 class="fs-title">Uma marca para quem constrói o futuro das finanças.</h1></div><p class="fs-lead">Três caminhos visuais, testados em redução, contraste e aplicações reais. A escolha aprovada será refinada e exportada depois.</p></div>
+  </header>
+
+  <main>
+    <section class="board"><div class="fs-shell">
+      <div class="board__head"><div class="fs-stack"><span class="fs-tag fs-tag--signal">Recomendado</span><p class="fs-kicker">Conceito A / Stack</p><h2 class="fs-title">Camadas que avançam.</h2></div><div class="board__index">A</div></div>
+      <div class="logo-stage logo-stage--black">
+        <div class="logo-lockup">
+          <svg class="mark" viewBox="0 0 96 96" role="img" aria-label="Símbolo Stack"><use href="#mark-stack"/></svg>
+          <div class="logo-name">fin-stack<small>academy</small></div>
+        </div>
+      </div>
+      <div class="concept-grid"><div class="concept-note"><p class="fs-kicker">IDEIA</p><p>Três níveis constroem um “F” e uma pilha. O bloco verde avança além da estrutura, representando aplicação prática e evolução.</p></div><div class="concept-note"><p class="fs-kicker">PERSONALIDADE</p><p>Direta, técnica, memorável e coerente com a linguagem editorial do design system.</p></div></div>
+    </div></section>
+
+    <section class="board"><div class="fs-shell">
+      <div class="board__head"><div class="fs-stack"><p class="fs-kicker">Conceito B / Prompt</p><h2 class="fs-title">Conhecimento em execução.</h2></div><div class="board__index">B</div></div>
+      <div class="logo-stage logo-stage--signal">
+        <div class="logo-lockup">
+          <svg class="mark" viewBox="0 0 96 96" aria-label="Símbolo Prompt"><path d="M14 17h68v62H14V17Zm15 17 16 14-16 14 9 9 26-23-26-23-9 9Zm35 25h-18v12h18V59Z" fill="currentColor"/></svg>
+          <div class="logo-name logo-name--one-line">fin-stack <small>academy</small></div>
+        </div>
+      </div>
+      <div class="concept-grid"><div class="concept-note"><p class="fs-kicker">IDEIA</p><p>Um terminal reduzido ao essencial: prompt, cursor e contêiner. Comunica software de imediato sem recorrer a símbolos financeiros óbvios.</p></div><div class="concept-note"><p class="fs-kicker">PERSONALIDADE</p><p>Digital, jovem e específica para desenvolvedores. Funciona especialmente bem como ícone de produto.</p></div></div>
+    </div></section>
+
+    <section class="board"><div class="fs-shell">
+      <div class="board__head"><div class="fs-stack"><p class="fs-kicker">Conceito C / Exchange</p><h2 class="fs-title">Troca que gera valor.</h2></div><div class="board__index">C</div></div>
+      <div class="logo-stage">
+        <div class="logo-lockup">
+          <svg class="mark" viewBox="0 0 96 96" aria-label="Símbolo Exchange"><path d="M17 22h50l15 16-15 16H17l15-16-15-16Zm62 20-15 16H29L14 74h53l15-16-3-16Z" fill="currentColor"/><path d="M32 38h50L67 54H17l15-16Z" fill="#b7f34a"/></svg>
+          <div class="logo-name">fin-stack<small>academy</small></div>
+        </div>
+      </div>
+      <div class="concept-grid"><div class="concept-note"><p class="fs-kicker">IDEIA</p><p>Duas direções formam uma estrutura contínua. Une fluxo financeiro, troca de conhecimento e colaboração entre profissionais.</p></div><div class="concept-note"><p class="fs-kicker">PERSONALIDADE</p><p>Institucional, aberta e dinâmica. Tem menos associação direta com código do que as propostas anteriores.</p></div></div>
+    </div></section>
+
+    <section class="board"><div class="fs-shell fs-stack" style="--fs-gap:var(--fs-s7)">
+      <div class="fs-stack"><p class="fs-kicker">Teste / Redução</p><h2 class="fs-title">Reconhecível em qualquer escala.</h2><p class="fs-lead fs-reading">Aplicação do conceito A em tamanhos críticos. A geometria simples preserva a leitura em favicon, avatar, navegação e materiais impressos.</p></div>
+      <div class="sizes">
+        <div class="size-sample"><svg viewBox="0 0 96 96" style="--size:16px"><use href="#mark-stack"/></svg><span class="fs-meta">16 PX</span></div>
+        <div class="size-sample"><svg viewBox="0 0 96 96" style="--size:24px"><use href="#mark-stack"/></svg><span class="fs-meta">24 PX</span></div>
+        <div class="size-sample"><svg viewBox="0 0 96 96" style="--size:48px"><use href="#mark-stack"/></svg><span class="fs-meta">48 PX</span></div>
+        <div class="size-sample"><svg viewBox="0 0 96 96" style="--size:96px"><use href="#mark-stack"/></svg><span class="fs-meta">96 PX</span></div>
+        <div class="size-sample"><div class="micro-lockup"><svg viewBox="0 0 96 96" style="--size:36px"><use href="#mark-stack"/></svg><strong>fin-stack academy</strong></div><span class="fs-meta">ASSINATURA HORIZONTAL</span></div>
+      </div>
+    </div></section>
+
+    <section class="board"><div class="fs-shell fs-stack" style="--fs-gap:var(--fs-s7)">
+      <div class="fs-stack"><p class="fs-kicker">Mockups / Conceito A</p><h2 class="fs-title">A marca em contexto.</h2></div>
+      <div class="mockups">
+        <div class="mockup mockup-lms"><div class="browser"><div class="browser__top"><i class="browser__dot"></i><i class="browser__dot"></i><i class="browser__dot"></i></div><div class="browser__nav"><div class="browser__brand"><svg viewBox="0 0 96 96"><use href="#mark-stack"/></svg>fin-stack academy</div><span class="fs-meta">MEUS CURSOS</span></div><div class="browser__body"><div><p class="fs-kicker">Módulo 04</p><h3 class="browser__title">Arquitetura resiliente.</h3></div><div class="browser__card"><span class="fs-tag fs-tag--signal">Em andamento</span><div><span class="fs-meta">PROGRESSO</span><br><strong>72%</strong></div></div></div></div></div>
+        <div class="mockup mockup-card"><div class="business-card"><div class="logo-lockup"><svg viewBox="0 0 96 96" style="--mark-accent:#0a0d0c"><use href="#mark-stack"/></svg><div class="logo-name">fin-stack academy</div></div><div class="business-card__info">YAN JUSTINO<br>FOUNDER & INSTRUCTOR<br><br>FIN-STACK.ACADEMY</div></div></div>
+        <div class="mockup mockup-mobile"><div class="phone"><div class="phone__screen"><div class="logo-lockup"><svg viewBox="0 0 96 96"><use href="#mark-stack"/></svg><div class="logo-name">fin-stack academy</div></div><div class="lesson"><span class="fs-tag fs-tag--signal">Aula 08</span><p>Escalabilidade e consistência</p><div class="lesson__number">08</div></div></div></div></div>
+        <div class="mockup logo-stage logo-stage--black"><div class="logo-lockup"><svg class="mark" viewBox="0 0 96 96"><use href="#mark-stack"/></svg><div class="logo-name">fin-stack<small>academy</small></div></div></div>
+      </div>
+      <aside class="recommendation fs-stack"><p class="fs-kicker">Direção recomendada</p><h2 class="fs-heading">Conceito A — Stack</h2><p class="fs-reading">É o caminho mais proprietário: une a inicial “F”, a ideia de stack tecnológica e o movimento de avanço. Também é o que melhor preserva personalidade em tamanhos pequenos e nos dois temas do sistema visual.</p></aside>
+    </div></section>
+  </main>
+</body></html>

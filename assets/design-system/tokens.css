@@ -1,0 +1,22 @@
+:root {
+  color-scheme: light;
+  --fs-black:#0a0d0c; --fs-graphite:#171b19; --fs-mist:#eef1ef; --fs-paper:#f8faf8; --fs-white:#fff;
+  --fs-signal:#b7f34a; --fs-signal-strong:#9cdd2e; --fs-blue:#2764ff; --fs-red:#e3493f; --fs-amber:#bf7900;
+  --fs-bg:var(--fs-paper); --fs-surface:var(--fs-white); --fs-surface-inverse:var(--fs-black);
+  --fs-text:var(--fs-black); --fs-text-soft:#5d6762; --fs-text-inverse:#f7faf8;
+  --fs-line:#dfe5e1; --fs-line-strong:#aeb9b3; --fs-accent:var(--fs-signal); --fs-accent-hover:var(--fs-signal-strong); --fs-on-accent:var(--fs-black);
+  --fs-focus:var(--fs-blue); --fs-info:var(--fs-blue); --fs-success:#198754; --fs-warning:var(--fs-amber); --fs-danger:var(--fs-red);
+  --fs-font-display:"Arial Narrow","Avenir Next Condensed","Helvetica Neue",Arial,sans-serif;
+  --fs-font-sans:Inter,"Avenir Next","Segoe UI",Helvetica,Arial,sans-serif; --fs-font-mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;
+  --fs-step--1:.8125rem; --fs-step-0:1rem; --fs-step-1:clamp(1.125rem,1.04rem + .35vw,1.3rem);
+  --fs-step-2:clamp(1.5rem,1.25rem + .9vw,2rem); --fs-step-3:clamp(2rem,1.45rem + 2.2vw,3.4rem); --fs-step-4:clamp(3.2rem,1.7rem + 6vw,7.5rem);
+  --fs-s1:.25rem; --fs-s2:.5rem; --fs-s3:.75rem; --fs-s4:1rem; --fs-s5:1.5rem; --fs-s6:2rem; --fs-s7:3rem; --fs-s8:4.5rem; --fs-s9:7rem;
+  --fs-radius-sm:.35rem; --fs-radius-md:.75rem; --fs-radius-lg:1.25rem; --fs-radius-round:999px;
+  --fs-container:82rem; --fs-reading:64ch; --fs-fast:140ms; --fs-base:240ms; --fs-ease:cubic-bezier(.2,.8,.2,1);
+}
+[data-theme="dark"] {
+  color-scheme:dark; --fs-bg:#0a0d0c; --fs-surface:#131715; --fs-surface-inverse:#f1f4f2;
+  --fs-text:#f4f7f5; --fs-text-soft:#a5afa9; --fs-text-inverse:#0a0d0c; --fs-line:#29302c; --fs-line-strong:#4b5751;
+  --fs-accent:#b7f34a; --fs-accent-hover:#c9ff65;
+}
+@media (prefers-reduced-motion:reduce){:root{--fs-fast:0ms;--fs-base:0ms}}

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 120" role="img" aria-labelledby="title">
+  <title id="title">Logomarca horizontal fin-stack academy para fundo escuro</title>
+  <g shape-rendering="crispEdges" transform="translate(6 12)">
+    <path d="M12 18H84V36H36V78H12V18Z" fill="#FFFFFF"/>
+    <path d="M36 42H84V60H36V42Z" fill="#B7F34A"/>
+  </g>
+  <g fill="#FFFFFF">
+    <text x="120" y="61" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="52" font-weight="800" letter-spacing="-3">fin-stack</text>
+    <text x="123" y="88" font-family="SFMono-Regular, Consolas, monospace" font-size="13" font-weight="700" letter-spacing="4.4">ACADEMY</text>
+  </g>
+</svg>
