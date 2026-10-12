@@ -1,0 +1,11 @@
+# C4 Board local: docker compose up -d  →  http://localhost:8080
+services:
+  c4-board:
+    # Imagem publicada; para usar o codigo local: docker compose up -d --build
+    image: finstackacademy/c4-board:latest
+    build: .
+    ports:
+      # Mantenha a mesma porta: o modelo fica no localStorage do navegador,
+      # que e separado por endereco (localhost:8080 ≠ localhost:9090).
+      - "8080:8080"
+    restart: unless-stopped

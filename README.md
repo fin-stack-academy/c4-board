@@ -27,6 +27,39 @@ O modelo é salvo automaticamente no `localStorage` do navegador. Para guardar
 ou compartilhar, use **Exportar JSON** / **Importar JSON**; **Exportar HTML**
 gera um documento único com todos os diagramas em SVG (abre offline, sem scripts).
 
+## Docker
+
+A imagem serve o site estático com nginx (sem root, porta 8080). O build roda
+`npm test` antes de `npm run build`: a imagem só sai se os testes passarem.
+
+Para usar (imagem publicada em [`finstackacademy/c4-board`](https://hub.docker.com/r/finstackacademy/c4-board)):
+
+```sh
+docker run -d -p 8080:8080 --name c4-board finstackacademy/c4-board:latest
+# ou, neste repositório
+docker compose up -d            # imagem publicada
+docker compose up -d --build    # a partir do código local
+```
+
+- O modelo fica no `localStorage` **do navegador**, não no contêiner: recriar ou
+  atualizar a imagem não perde nada, mas trocar a porta ou o host sim (cada
+  endereço tem o seu armazenamento). Use **Exportar JSON** para guardar.
+- `GET /healthz` responde `ok` (usado pelo `HEALTHCHECK` da imagem).
+
+### Publicar uma versão
+
+```sh
+docker login -u finstackacademy               # uma vez; token Read & Write no lugar da senha
+npm version patch --no-git-tag-version        # 0.1.0 → 0.1.1 (ou minor / major)
+npm run release:dry-run                       # gera amd64 + arm64 sem publicar
+npm run release                               # gera e publica :<versão> e :latest
+```
+
+`scripts/release.sh` lê a versão do `package.json`, recusa publicar uma tag que
+já existe no Docker Hub, avisa se há alterações não commitadas e grava versão,
+commit e data como labels da imagem. `IMAGE` e `PLATFORMS` podem ser trocados
+por variável de ambiente.
+
 ## Identidade visual
 
 A interface, o documento exportado e a paleta dos diagramas seguem o design

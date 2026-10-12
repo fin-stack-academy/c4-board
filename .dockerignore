@@ -1,0 +1,13 @@
+node_modules
+dist
+.git
+.DS_Store
+.vscode
+.claude
+Dockerfile
+.dockerignore
+# Do kit de marca, a imagem so precisa de assets/img.
+assets/*
+!assets/img
+.env
+.env.*
