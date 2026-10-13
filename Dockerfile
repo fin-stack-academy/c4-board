@@ -17,7 +17,8 @@ RUN npm test && npm run build
 FROM nginxinc/nginx-unprivileged:1.27.3-alpine
 LABEL org.opencontainers.image.title="C4 Board" \
       org.opencontainers.image.description="Editor de diagramas C4 da fin-stack academy" \
-      org.opencontainers.image.vendor="fin-stack academy"
+      org.opencontainers.image.vendor="fin-stack academy" \
+      org.opencontainers.image.licenses="MIT"
 COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 8080

@@ -1,11 +1,6 @@
 # C4 Board
 
-Produto da **fin-stack academy**. Editor de diagramas C4 (contexto, contêineres e componentes) a partir de
-tabelas de elementos e relações. O Mermaid, a legenda, as tabelas e a
-verificação das regras do [C4 model](https://c4model.com) são gerados por
-código a partir do modelo — nunca escritos à mão.
-
-Extraído do editor de modelo arquitetural do Senpai.
+Produto da **fin-stack academy**. Editor de diagramas C4 (contexto, contêineres e componentes) a partir de tabelas de elementos e relações. O Mermaid, a legenda, as tabelas e a verificação das regras do [C4 model](https://c4model.com) são gerados por código a partir do modelo — nunca escritos à mão.
 
 ## Uso
 
@@ -46,20 +41,6 @@ docker compose up -d --build    # a partir do código local
   endereço tem o seu armazenamento). Use **Exportar JSON** para guardar.
 - `GET /healthz` responde `ok` (usado pelo `HEALTHCHECK` da imagem).
 
-### Publicar uma versão
-
-```sh
-docker login -u finstackacademy               # uma vez; token Read & Write no lugar da senha
-npm version patch --no-git-tag-version        # 0.1.0 → 0.1.1 (ou minor / major)
-npm run release:dry-run                       # gera amd64 + arm64 sem publicar
-npm run release                               # gera e publica :<versão> e :latest
-```
-
-`scripts/release.sh` lê a versão do `package.json`, recusa publicar uma tag que
-já existe no Docker Hub, avisa se há alterações não commitadas e grava versão,
-commit e data como labels da imagem. `IMAGE` e `PLATFORMS` podem ser trocados
-por variável de ambiente.
-
 ## Identidade visual
 
 A interface, o documento exportado e a paleta dos diagramas seguem o design
@@ -78,6 +59,36 @@ dos elementos está em `PALETTE` (`src/c4/diagram.js`).
 | `src/editor.js` | O editor em abas/tabelas |
 | `src/preview.js` | Desenho com Mermaid (SVG) e prévia em iframe sem scripts |
 | `src/main.js` | Barra superior, persistência, importar/exportar, tema |
+
+## Dependências
+
+| Dependência | Versão | Uso | Licença |
+| --- | --- | --- | --- |
+| [Mermaid](https://github.com/mermaid-js/mermaid) | 12.0.0 | Desenho dos diagramas (vai no bundle) | MIT |
+| [Vite](https://github.com/vitejs/vite) | 7.3.6 | Servidor de desenvolvimento e build (só desenvolvimento) | MIT |
+
+Imagens base do Docker:
+
+| Imagem | Uso | Licença |
+| --- | --- | --- |
+| [`node:22.12-alpine`](https://hub.docker.com/_/node) | Etapa de build (não vai para a imagem final) | MIT (Node.js) |
+| [`nginxinc/nginx-unprivileged:1.27.3-alpine`](https://hub.docker.com/r/nginxinc/nginx-unprivileged) | Servidor da imagem final | BSD-2-Clause (nginx) |
+
+O bundle publicado leva o Mermaid e as dependências dele (cerca de 120
+pacotes, quase todos MIT, ISC, Apache-2.0 ou BSD-3-Clause, todas permissivas).
+Pontos de atenção:
+
+- [`elkjs`](https://github.com/kieler/elkjs) (layout, via Mermaid) é **EPL-2.0**,
+  copyleft fraco por arquivo: distribuir sem modificar não gera obrigação além
+  de manter o aviso de licença; modificar os arquivos dele obriga a publicar
+  essas modificações.
+- [`DOMPurify`](https://github.com/cure53/DOMPurify) (sanitização, via Mermaid)
+  é licenciado como MPL-2.0 **ou** Apache-2.0; este projeto o usa sob Apache-2.0.
+
+Para a lista completa: `npx license-checker --production --summary`.
+
+As fontes do design system (Inter, Avenir Next) não são distribuídas: o app
+usa as que estiverem instaladas no sistema.
 
 ## Formato do modelo
 
@@ -100,3 +111,10 @@ dos elementos está em `PALETTE` (`src/c4/diagram.js`).
 Tipos de elemento: `pessoa`, `sistema_externo`, `container`, `banco_dados`,
 `componente`. No contexto, o sistema em escopo é referenciado pelo id
 reservado `sistema`. Um `modelo.json` do Senpai pode ser importado direto.
+
+## Licença
+
+[MIT](LICENSE) © 2026 fin-stack academy. As dependências mantêm as próprias
+licenças (ver [Dependências](#dependências)). A marca e o kit visual em
+`assets/` identificam a fin-stack academy e não são cobertos pela licença MIT
+do código.
